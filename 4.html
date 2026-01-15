@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="flex flex-col gap-5 items-center justify-center">
+     <h1 class=" text-7xl "> Calculator</h1>
+    <div class="main h-150 w-85 bg-[##FDFBD4]" >
+        <div class=" output h-30 w-85 border bg-[#dcdcdc]">
+
+        </div>
+        
+          <div class="numbers bg-[#202124] justify-between border flex flex-wrap  p-3 gap-2">
+            <input class="rectangular-full bg-[#d4d4d2] w-17 border" type="button"value="C">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="()">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="%">
+            
+            <input class="rectangular-full bg-[#ff9f0a] h-17 w-17 border" type="button"value="/">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="7">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="8">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="9">
+            <input class="rectangular-full bg-[#ff9f0a] h-17 w-17 border" type="button"value="*">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="4">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="5">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="6">
+            <input class="rectangular-full bg-[#ff9f0a] h-17 w-17 border" type="button"value="-">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="1">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="2">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="3">
+            <input class="rectangular-full bg-[#ff9f0a] h-17 w-17 border" type="button"value="+">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="0">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value=".">
+            <input class="rectangular-full bg-[#d4d4d2] h-17 w-17 border" type="button"value="00">
+            <input class="rectangular-full bg-[#ff9f0a] h-17 w-17 border" type="button"value="=">
+
+            
+    
+
+         </div>
+    
+    
+      </div>
+
+    <script>
+        
+    let total=0
+    let given=""
+    const inp=document.querySelectorAll('input')
+    const operators = ['+', '-', '*', '/']
+
+    inp.forEach(inp => {
+    inp.addEventListener('click', (e) => {
+        if(e.target.value=='='){
+          total = eval(given)
+          given=total.toString()
+          console.log(total)
+          document.querySelector('.output').textContent=total
+        }
+        else if(e.target.value=='C'){
+            given=''
+            document.querySelector('.output').textContent=given
+            return
+        }
+        else{
+              if(operators.includes(e.target.value) && operators.includes(given.slice(-1))) {
+                return
+             }else{
+                given = given+e.target.value
+            console.log(given)
+            document.querySelector('.output').textContent=given
+             }
+            
+        }
+
+   })
+})
+</script>
+      
+       
+</body>
+</html>

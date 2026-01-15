@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Signal</title>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style>
+    
+    .light {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: #1f2933;
+    }
+
+    
+    .bg-red-700 {
+      background: red;
+      box-shadow: 0 0 18px red;
+    }
+
+    .bg-green-700 {
+      background: #22c55e;
+      box-shadow: 0 0 18px #22c55e;
+    }
+
+    .bg-orange-700 {
+      background: orange;
+      box-shadow: 0 0 18px orange;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen flex flex-col items-center gap-10 
+bg-[url('https://static.vecteezy.com/ti/foto-gratuito/t1/6504729-sfondo-astratto-cielo-blu-con-paesaggio-nuvoloso-puoi-utilizzare-questo-sfondo-per-il-tuo-contenuto-come-come-video-promozione-qoute-bacdrop-social-media-concetto-presentazione-istruzione-e-non-solo-foto.jpg')]
+bg-cover bg-center">
+
+<div class="flex flex-col items-center ">
+<h1 class="text-4xl font-extrabold text-center text-gray-900 mt-8">
+  Traffic Simulator
+</h1>
+</div>
+
+<div class="flex gap-10">
+
+  
+  <div class="traffic w-[120px] h-[260px] bg-gray-900 rounded-2xl flex flex-col items-center justify-between p-4 shadow-xl">
+    <div class="red light"></div>
+    <div class="green light"></div>
+    <div class="orange light"></div>
+  </div>
+
+
+  <div class="traffic w-[120px] h-[260px] bg-gray-900 rounded-2xl flex flex-col items-center justify-between p-4 shadow-xl">
+    <div class="red light"></div>
+    <div class="green light"></div>
+    <div class="orange light"></div>
+  </div>
+
+  
+  <div class="traffic w-[120px] h-[260px] bg-gray-900 rounded-2xl flex flex-col items-center justify-between p-4 shadow-xl">
+    <div class="red light"></div>
+    <div class="green light"></div>
+    <div class="orange light"></div>
+  </div>
+
+  
+  <div class="traffic w-[120px] h-[260px] bg-gray-900 rounded-2xl flex flex-col items-center justify-between p-4 shadow-xl">
+    <div class="red light"></div>
+    <div class="green light"></div>
+    <div class="orange light"></div>
+  </div>
+</div>
+</body>
+
+<script>
+  const signals = document.querySelectorAll('.traffic');
+  let index = 0;
+
+  function allred() {
+    signals.forEach(signal => {
+      signal.querySelector('.red').classList.add('bg-red-700');
+      signal.querySelector('.green').classList.remove('bg-green-700');
+      signal.querySelector('.orange').classList.remove('bg-orange-700');
+    });
+  }
+
+  function signalCycle() {
+    allred();
+
+    const red = signals[index].querySelector('.red');
+    const green = signals[index].querySelector('.green');
+    const orange = signals[index].querySelector('.orange');
+
+
+    setTimeout(() => {
+      red.classList.remove('bg-red-700');
+      green.classList.add('bg-green-700');
+    }, 1000);
+
+
+    setTimeout(() => {
+      green.classList.remove('bg-green-700');
+      orange.classList.add('bg-orange-700');
+    }, 6000);
+
+    
+    setTimeout(() => {
+      orange.classList.remove('bg-orange-700');
+      index = (index + 1) % signals.length;
+      signalCycle();
+    }, 11000);
+  }
+
+  signalCycle();
+</script>
+</html>

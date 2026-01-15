@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <body>
+    <center>
+        
+        
+        <p id="a" class=" text-4xl text-blue-500 p-5 "> colour select </p>
+        
+        <input class="w-24 h-12 cursor-pointer" type="color" id="clrs" >
+        
+    </center>
+        
+    <script> 
+    
+    document.querySelector('#clrs').addEventListener('change',(b)=>{
+    document.querySelector('body').style.backgroundColor=b.target.value
+    console.log(e.target.value)
+    })
+    
+    </script>
+</body>
+</body>
+</html>

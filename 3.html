@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Digital Clock</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="h-screen flex flex-col gap-6 items-center justify-center bg-[#12e8e8]">
+    <p id="clock" class="text-5xl font-bold text-[#881be3] tracking-widest">
+    Digital Clock
+  </p>
+    <script>
+        function clock(){
+            let time = new Date().toLocaleString("en-IN",{hour12:true})
+            console.log(time)
+            return time
+        }
+        
+        
+        
+        const b = document.createElement('p')
+        document.body.appendChild(b)
+        b.innerText=clock()
+        setInterval( () => {
+            b.innerText=clock()
+            b.classList.add('text-4xl','text-[#f60400]')
+            
+        },1000
+        
+    )
+    
+    
+    
+    
+    
+</script>
+ </body>
+</html>

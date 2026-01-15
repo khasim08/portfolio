@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="flex flex-col items-center justify-center min-h-screen gap-10 bg-slate-900 text-white">
+
+    <h1 class="text-4xl font-semibold tracking-wider text-emerald-400">
+        TIMER
+    </h1>
+
+    <div class="flex gap-12 items-center">
+
+        <!-- Minutes -->
+        <div class="flex flex-col items-center gap-2">
+            <input
+                class="minutes text-center text-2xl rounded-xl h-[70px] w-[120px] border border-emerald-400 bg-slate-800 focus:outline-none"
+                type="number" value="00">
+            <p class="text-sm text-red-300">Min</p>
+        </div>
+
+        <!-- Seconds -->
+        <div class="flex flex-col items-center gap-2">
+            <input
+                class="seconds text-center text-2xl rounded-xl h-[70px] w-[120px] border border-emerald-400 bg-slate-800 focus:outline-none"
+                type="number" value="00">
+            <p class="text-sm text-red-300">Sec</p>
+        </div>
+
+        <!-- Button -->
+        <button
+            class="bg-emerald-500 hover:bg-emerald-600 transition px-6 h-[50px] rounded-xl font-medium shadow-lg">
+            START TIMER
+        </button>
+
+    </div>
+
+    <p class="t text-xl text-emerald-300"></p>
+
+</body>
+
+<script>
+    let b=0
+    let c=0
+    let a=0
+    let interval=''
+    const t=document.querySelector('.t')
+    document.querySelector('.minutes').addEventListener('change',(e)=>{
+       b =  parseInt( e.target.value)*60
+       a=b+c
+    console.log(a)})
+    document.querySelector('.seconds').addEventListener('change',(e)=>{
+       c = parseInt( e.target.value)
+        a=b+c
+    })
+    function timer(){
+             if(a<=0){
+        clearInterval(interval)
+    }
+        t.textContent=`${Math.floor(a/60)}: ${a%60}`
+            a-=1
+    }
+    document.querySelector('button').addEventListener('click',()=>{
+        clearInterval(interval)
+        if(a>0){
+             interval=setInterval(timer,1000)
+        }
+    })
+</script>
+</html>

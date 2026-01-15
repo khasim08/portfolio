@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body class="min-h-screen flex items-center justify-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfRbjLGVBgSRwHWFr0b_VxpuQhoRAr9Pqs_Q&s')]
+bg-cover bg-center">>
+
+  
+  <div class="w-[90%] max-w-lg bg-white rounded-3xl shadow-2xl p-8">
+
+    <h1 class="text-3xl font-extrabold text-center text-gray-800 mb-6">
+      Create Account
+    </h1>
+
+    <form class="flex flex-col gap-4">
+
+      
+      <div>
+        <label class="text-gray-600">E-mail</label>
+        <input type="email" id="email" required
+          class="w-full mt-1 border rounded-xl h-11 px-4 focus:outline-none">
+      </div>
+
+    
+      <div>
+        <label class="text-gray-600">Phone</label>
+        <input type="number" id="phone" required
+          class="w-full mt-1 border rounded-xl h-11 px-4 focus:outline-none">
+      </div>
+
+      
+      <div>
+        <label class="text-gray-600">Password</label>
+        <div class="flex items-center border rounded-xl px-3 h-11">
+          <input id="password" type="password" required
+            class="flex-1 focus:outline-none">
+          <button class="eye text-xl" type="button">👁️</button>
+        </div>
+      </div>
+
+      
+      <div>
+        <label class="text-gray-600">Confirm Password</label>
+        <div class="flex items-center border rounded-xl px-3 h-11">
+          <input id="password2" type="password" required
+            class="flex-1 focus:outline-none">
+          <button class="eye2 text-xl" type="button">👁️</button>
+        </div>
+      </div>
+
+    
+      <div class="flex items-center gap-3">
+        <p class="cap flex-1 bg-gray-100 text-gray-800 font-bold text-center py-2 rounded-xl tracking-widest"></p>
+        <input type="text"
+          class="cpt w-1/2 border rounded-xl h-11 px-3 focus:outline-none"
+          placeholder="Captcha">
+      </div>
+
+      
+      <button
+        class="button mt-4 bg-emerald-400 hover:bg-emerald-500 text-black font-bold py-3 rounded-xl disabled:opacity-50"
+        disabled>
+        Register
+      </button>
+
+    </form>
+  </div>
+
+<script>
+
+let pass=''
+let pass2=''
+let user_cpt=''
+
+document.querySelector('.cpt').addEventListener('change',(e)=>{
+  user_cpt=e.target.value
+  console.log(user_cpt)
+  if(pass==pass2 && captcha==user_cpt){
+    document.querySelector('.button').disabled=false
+  }
+  if(captcha!=user_cpt){
+    alert('mismatch captcha')
+  }
+})
+
+let captcha=Math.random().toString(36).substring(2,10)
+console.log(captcha)
+document.querySelector('.cap').innerText=captcha
+
+document.querySelector('#password').addEventListener('change',(e)=>{
+  pass=e.target.value
+  console.log(pass)
+})
+
+document.querySelector('#password2').addEventListener('change',(a)=>{
+  pass2 = a.target.value
+  console.log(pass2)
+  if(pass2!=pass){
+    alert('mismatch password')
+  }
+})
+
+document.querySelector('.eye').addEventListener('click',()=>{
+  document.querySelector('#password').type="text"
+})
+
+document.querySelector('.eye2').addEventListener('click',()=>{
+  document.querySelector('#password2').type="text"
+})
+</script>
+
+</body>
+</html>
